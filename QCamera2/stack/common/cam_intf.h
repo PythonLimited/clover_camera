@@ -1193,12 +1193,12 @@ typedef struct {
     INCLUDE(XIAOMI_PROPRIETARY_THREE, 			uint32_t,			1);
     INCLUDE(XIAOMI_PROPRIETARY_FOUR, 			uint8_t,			1);
     /* Gap fillers */
-    INCLUDE(XIAOMI_PROPRIETARY_I, 			uint8_t,			1);
     INCLUDE(XIAOMI_PROPRIETARY_II, 			uint8_t,			1);
     INCLUDE(XIAOMI_PROPRIETARY_III, 			uint8_t,			1);
     /* Gap fillers END */
     INCLUDE(XIAOMI_PROPRIETARY_FIVE,			uint8_t,			8);
     INCLUDE(XIAOMI_PROPRIETARY_SIX,			uint32_t,			1);
+    INCLUDE(XIAOMI_PROPRIETARY_I, 			uint8_t,			1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to
