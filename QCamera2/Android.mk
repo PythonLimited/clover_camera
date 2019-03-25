@@ -4,6 +4,9 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
+SDCLANG_COMMON_DEFS := $(LOCAL_PATH)/sdllvm-common-defs.mk
+SDCLANG_FLAG_DEFS := $(LOCAL_PATH)/sdllvm-flag-defs.mk
+
 LOCAL_COPY_HEADERS_TO := qcom/camera
 LOCAL_COPY_HEADERS := QCameraFormat.h
 
@@ -110,8 +113,7 @@ LOCAL_C_INCLUDES := \
 
 #HAL 1.0 Include paths
 LOCAL_C_INCLUDES += \
-         $(LOCAL_PATH)/QCamera2/HAL \
-	 device/xiaomi/clover/camera/QCamera2/HAL \
+        $(call project-path-for,qcom-camera)/QCamera2/HAL
 
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
@@ -144,10 +146,6 @@ LOCAL_SHARED_LIBRARIES := liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
 LOCAL_SHARED_LIBRARIES += libcutils libdl libhal_dbg
-ifeq ($(IS_QC_BOKEH_SUPPORTED),true)
-LOCAL_SHARED_LIBRARIES += libdualcameraddm
-LOCAL_CFLAGS += -DENABLE_QC_BOKEH
-endif
 ifeq ($(USE_DISPLAY_SERVICE),true)
 LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 android.hidl.base@1.0 libhidlbase libhidltransport
 else
@@ -170,3 +168,6 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 endif
+
+# Clear SDCLANG_FLAG_DEFS after use
+SDCLANG_FLAG_DEFS :=

@@ -805,7 +805,6 @@ done:
     }
     ATRACE_END();
     LOGD("X");
-    return rc;
 #else
     (void) pMain;
     (void) pAux;

@@ -923,7 +923,6 @@ typedef struct {
 /**************************************************************************************
  *  ID from (cam_intf_metadata_type_t)                DATATYPE                     COUNT
  **************************************************************************************/
-
     /* common between HAL1 and HAL3 */
     INCLUDE(CAM_INTF_META_HISTOGRAM,                    cam_hist_stats_t,               1);
     INCLUDE(CAM_INTF_META_FACE_DETECTION,               cam_face_detection_data_t,      1);
@@ -1169,7 +1168,10 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1);
     INCLUDE(CAM_INTF_META_FOCUS_DEPTH_INFO,             uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_HAL_BRACKETING_HDR,           cam_hdr_param_t,             1);
+
+    /* wait whut */
     INCLUDE(XIAOMI_PROPRIETARY_ONE, 			uint32_t,		     1);
+
     INCLUDE(CAM_INTF_META_DC_LOW_POWER_ENABLE,          uint8_t,                     1);
     INCLUDE(CAM_INTF_META_DC_SAC_OUTPUT_INFO,           cam_sac_output_info_t,       1);
     INCLUDE(CAM_INTF_META_DC_IN_SNAPSHOT_PP_ZOOM_RANGE, uint8_t,                     1);
@@ -1192,13 +1194,9 @@ typedef struct {
     INCLUDE(XIAOMI_PROPRIETARY_TWO, 			uint32_t,			1);
     INCLUDE(XIAOMI_PROPRIETARY_THREE, 			uint32_t,			1);
     INCLUDE(XIAOMI_PROPRIETARY_FOUR, 			uint8_t,			1);
-    /* Gap fillers */
-    INCLUDE(XIAOMI_PROPRIETARY_II, 			uint8_t,			1);
-    INCLUDE(XIAOMI_PROPRIETARY_III, 			uint8_t,			1);
-    /* Gap fillers END */
-    INCLUDE(XIAOMI_PROPRIETARY_FIVE,			uint8_t,			8);
+    INCLUDE(XIAOMI_PROPRIETARY_FIVE,			custom_parm_buffer_t,		1);
     INCLUDE(XIAOMI_PROPRIETARY_SIX,			uint32_t,			1);
-    INCLUDE(XIAOMI_PROPRIETARY_I, 			uint8_t,			1);
+    INCLUDE(XIAOMI_PROPRIETARY_SEVEN, 			uint8_t,			1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to

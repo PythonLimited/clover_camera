@@ -1354,7 +1354,7 @@ typedef struct {
     cam_dimension_t fd_frame_dim;              /* frame dims on which fd is applied */
     uint8_t update_flag;                       /* flag to inform whether HAL needs to send cb
                                                 * to app or not */
-    char buffer[160];				// Xiaomi added something with a 160 byte length here (size is 424 vs 264)
+    volatile char xiaomi_reversed[160];
 } cam_face_detection_data_t;
 
 // definition of composite face detection data
@@ -2055,7 +2055,6 @@ typedef  struct {
 } cam_metadata_info_t;
 
 typedef enum {
-
     CAM_INTF_PARM_HAL_VERSION = 0x1,
 
     /* Overall mode of 3A control routines. We need to have this parameter
@@ -2075,7 +2074,6 @@ typedef enum {
     CAM_INTF_PARM_AEC_LOCK,
     CAM_INTF_PARM_FPS_RANGE, /* 10 */
     CAM_INTF_PARM_AWB_LOCK,
-
     CAM_INTF_PARM_EFFECT,
     CAM_INTF_PARM_RAW_DIMENSION,
     CAM_INTF_PARM_DIS_ENABLE,
@@ -2492,17 +2490,14 @@ typedef enum {
     /* Enable/Disable AF fine scan */
     CAM_INTF_PARM_SKIP_FINE_SCAN,
     CAM_INTF_PARM_BOKEH_MODE,
+
     XIAOMI_PROPRIETARY_ONE,
     XIAOMI_PROPRIETARY_TWO,
-#if 1
     XIAOMI_PROPRIETARY_THREE,
     XIAOMI_PROPRIETARY_FOUR,
     XIAOMI_PROPRIETARY_FIVE,
     XIAOMI_PROPRIETARY_SIX,
-    XIAOMI_PROPRIETARY_I,
-    XIAOMI_PROPRIETARY_II,
-    XIAOMI_PROPRIETARY_III,
-#endif 
+    XIAOMI_PROPRIETARY_SEVEN,
 
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;
